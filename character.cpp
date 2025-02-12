@@ -23,7 +23,7 @@ public:
   };
 
   int get_att() {
-    return att = (rand() % 1 + 8);
+    return att = (rand() % 8 + 1);
   };
 
   void set_att(int a) {
@@ -40,43 +40,81 @@ public:
 class Player : public Character {
 public:
 
-  int hp = (rand() % 1 + 12) + 10;
+  int hp = (rand() % 12 + 1) + 10;
   int hpd = hp;
 
   int attack(Character current) {
     int h;
 
-    h = get_hpd() - get_att();
-    set_hpd(h);
+    h = current.get_hpd() - get_att();
+    current.set_hpd(h);
 
-    return get_hpd();
+    return current.get_hpd();
   };
 
   int level;
 
-  //Player() : level(0) {} 
+  int exp;
 
-  //int level_up()
+  Player() : level(0), exp(0) {} 
+
+  int get_exp() {
+    return exp;
+  };
+
+  void set_exp(int xp) {
+    exp = xp;
+  };
+
+  int get_level() {
+    return level;
+  };
+
+  void set_level(int lv) {
+    level = lv;
+  };
+
 };
 
 class Enemy : public Character {
 public:
 
-  int hp = (rand() % 1 + 12) + 10;
+  int hp = (rand() % 12 + 1) + 10;
   int hpd = hp;
 
   int attack(Character current) {
     int h;
 
-    h = get_hpd() - get_att();
-    set_hpd(h);
+    h = current.get_hpd() - get_att();
+    current.set_hpd(h);
 
-    return get_hpd();
+    return current.get_hpd();
   };
+
+  int level;
 
   int exp;
 
-  //Enemy() : exp(0) {}
+  Enemy() : exp(0), level(0) {}
 
-  //int 
+  int get_exp() {
+    return exp;
+  };
+
+  void set_exp(int xp) {
+    exp = xp;
+  };
+
+  int get_level() {
+    return level;
+  };
+
+  void set_level(int lv) {
+    level = lv;
+  };
+
 };
+
+
+
+
