@@ -12,7 +12,7 @@ public:
   int hpd;
   int att;
 
-  Character() : att(0) , hpd(0) {}
+  Character() : att(0) , hpd(0), level(0), exp(0) {}
 
   int get_hpd() {
     return hpd; 
@@ -34,6 +34,25 @@ public:
 
   int heal();
 
+  int level;
+  int exp;
+
+  int get_exp() {
+    return exp;
+  };
+
+  void set_exp(int xp) {
+    exp = xp;
+  };
+
+  int get_level() {
+    return level;
+  };
+
+  void set_level(int lv) {
+    level = lv;
+  };
+
 };
 
 
@@ -52,29 +71,42 @@ public:
     return current.get_hpd();
   };
 
-  int level;
+  string game_type; //игрой класс (маг, воин, стрелок и т.д.)
 
-  int exp;
+  int take_exp(){ // получение exp
+    if (get_hpd() <= 0) {
+      int xp;
+      xp = (rand() % 10 + 1);
+      xp = get_exp() + xp;
+      set_exp(xp);
 
-  Player() : level(0), exp(0) {} 
+      return get_hpd();
+    }
 
-  int get_exp() {
-    return exp;
+    else if (get_hpd() > 0) {
+      return get_exp();
+    }
   };
 
-  void set_exp(int xp) {
-    exp = xp;
+  int level_up(){
+    if (get_exp() >= 100) {
+      int l;
+      l = 1;
+      l = get_level() + l;
+      set_exp(l);
+
+      int xp;
+      xp = get_exp() - get_exp();
+      set_exp(xp);
+      return get_exp();
+    }
+
+    else if (get_exp() < 100) {
+      return get_exp();
+    }
   };
 
-  int get_level() {
-    return level;
-  };
-
-  void set_level(int lv) {
-    level = lv;
-  };
-
-};
+}; // конец класса игрока
 
 class Enemy : public Character {
 public:
@@ -91,26 +123,8 @@ public:
     return current.get_hpd();
   };
 
-  int level;
-
-  int exp;
-
-  Enemy() : exp(0), level(0) {}
-
-  int get_exp() {
-    return exp;
-  };
-
-  void set_exp(int xp) {
-    exp = xp;
-  };
-
-  int get_level() {
-    return level;
-  };
-
-  void set_level(int lv) {
-    level = lv;
+  void give_exp(Player current) {
+    current.take_exp();
   };
 
 };
