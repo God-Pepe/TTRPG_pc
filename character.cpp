@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <inventory>
 using namespace std;
 
 class Character {
@@ -12,6 +13,8 @@ public:
   int hpd;
   int att;
 
+  void queue(); // определяет кто первый ходит
+  
   Character() : att(0) , hpd(0), level(0), exp(0) {}
 
   int get_hpd() {
@@ -57,10 +60,34 @@ public:
 
 
 class Player : public Character {
+  
 public:
 
   int hp = (rand() % 12 + 1) + 10;
   int hpd = hp;
+
+string player_type;
+
+  Player() : player_type("") {}
+
+  string get_type() {
+    return player_type;
+  };
+
+  void set_type(string pt) {
+    pt = player_type;
+  };
+
+  string choose_type() {
+    string pt;
+
+    cout >> "Введи класс ";
+    cin << pt;
+
+    if (pt = "warrior"){
+      set_type(pt);
+    }
+  };
 
   int attack(Character current) {
     int h;
@@ -70,8 +97,6 @@ public:
 
     return current.get_hpd();
   };
-
-  string game_type; //игрой класс (маг, воин, стрелок и т.д.)
 
   int take_exp(){ // получение exp
     if (get_hpd() <= 0) {
@@ -89,7 +114,10 @@ public:
   };
 
   int level_up(){
-    if (get_exp() >= 100) {
+  
+    int n; //количество Exp для повышения уровня
+
+    if (get_exp() >= n) {
       int l;
       l = 1;
       l = get_level() + l;
@@ -98,12 +126,16 @@ public:
       int xp;
       xp = get_exp() - get_exp();
       set_exp(xp);
+
+      n = n + 10;
+
       return get_exp();
+
     }
 
-    else if (get_exp() < 100) {
+    else if (get_exp() < n) {
       return get_exp();
-    }
+    } // повышение уровня
   };
 
 }; // конец класса игрока
@@ -128,7 +160,4 @@ public:
   };
 
 };
-
-
-
 

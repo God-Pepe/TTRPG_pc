@@ -4,7 +4,7 @@
 #include"character.cpp"
 using namespace std;
 
-class level{
+class scene{
 
 }
 
