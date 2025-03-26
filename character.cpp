@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <inventory>
 using namespace std;
 
 class Character {
@@ -130,7 +129,6 @@ string player_type;
       n = n + 10;
 
       return get_exp();
-
     }
 
     else if (get_exp() < n) {
@@ -138,7 +136,11 @@ string player_type;
     } // повышение уровня
   };
 
+  int heal();
+
 }; // конец класса игрока
+
+
 
 class Enemy : public Character {
 public:

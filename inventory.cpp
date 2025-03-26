@@ -1,2 +1,93 @@
 #include<iostream>
-#include<vector>
+using namespace std;
+
+class tool { // протокласс для оружия и брони
+public:
+	int stabillity; // прочность
+
+	tool() : stabillity(0) {}
+
+	int get_stabillity() {
+		return stabillity;
+	};
+
+	void set_stabillity(int stab) {
+		stabillity = stab;
+	};
+
+	void deterioration(); // поломка
+
+	void mending(); // починка
+};
+
+class weapon : public tool {
+public:
+
+	int distance;
+
+	int get_distance() {
+		return distance;
+	};
+
+	void set_distance(int dist) {
+		distance = dist;
+	};
+
+	int damage;
+
+	int get_damage() {
+		return damage;
+	};
+
+	void set_damage(int dmg) {
+		damage = dmg;
+	};
+
+	weapon() : distance(0), damage(0) {}
+
+};
+
+class armor  : public tool {
+public:
+
+	void repulse(); // поглошение урона
+
+};
+
+class consumables {
+public:
+	int quantity; // количество
+
+	consumables() : quantity(0) {}
+
+	int get_quantity() {
+		return quantity;
+	};
+
+	void set_quantity(int quant) {
+		quantity = quant;
+	};
+
+	int use();
+
+}; // расходники
+
+class ThingForHeal : public consumables { // зелья здровья и тд.
+	int use() {
+		int q;
+		q = get_quantity() - 1;
+		set_quantity(q);
+
+		return get_quantity();
+	};
+};
+
+class ammo : public consumables { // боеприпасы (стрелы)
+	int use() {
+		int q;
+		q = get_quantity() - 1;
+		set_quantity(q);
+
+		return get_quantity();
+	};
+};
