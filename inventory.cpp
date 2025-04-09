@@ -73,12 +73,30 @@ public:
 }; // расходники
 
 class ThingForHeal : public consumables { // зелья здровья и тд.
+public:
+	int hpup;
+
+	ThingForHeal() : hpup(0) {}
+
+	int get_hpup() {
+		return hpup;
+	};
+
+	void set_hpup(int hu) {
+		hpup = hu;
+	};
+
 	int use() {
+
 		int q;
 		q = get_quantity() - 1;
 		set_quantity(q);
 
-		return get_quantity();
+		int hu;
+		hu = get_hpup();
+		hu  = (rand() % 8 + 1);
+		set_hpup(hu);
+		return get_hpup();
 	};
 };
 

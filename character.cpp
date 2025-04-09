@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include"inventory.cpp"
 using namespace std;
 
 class Character {
@@ -7,9 +8,9 @@ class Character {
   //void movement() {} // передвижение по полям  (сделать, когда займусь графической частью)
   
 public:
-  int hp;
+  int hp; // эталон HP
 
-  int hpd;
+  int hpd; // изменяемое значение HP
   int att;
 
   void queue(); // определяет кто первый ходит
@@ -65,36 +66,19 @@ public:
   int hp = (rand() % 12 + 1) + 10;
   int hpd = hp;
 
-string player_type;
-
-  Player() : player_type("") {}
-
-  string get_type() {
-    return player_type;
-  };
-
-  void set_type(string pt) {
-    pt = player_type;
-  };
-
-  string choose_type() {
-    string pt;
-
-    cout >> "Введи класс ";
-    cin << pt;
-
-    if (pt = "warrior"){
-      set_type(pt);
-    }
-  };
-
-  int attack(Character current) {
+  int heal(ThingForHeal current) {
     int h;
+    h = get_hpd() + current.hpup;
+    if (h > hp) {
+      h = hpd;
+      set_hpd(h);
+    }
 
-    h = current.get_hpd() - get_att();
-    current.set_hpd(h);
+    else if (h <= hp) {
+      set_hpd(h);
+    }
 
-    return current.get_hpd();
+    return get_hpd();
   };
 
   int take_exp(){ // получение exp
@@ -136,7 +120,6 @@ string player_type;
     } // повышение уровня
   };
 
-  int heal();
 
 }; // конец класса игрока
 
