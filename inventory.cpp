@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include"chooseType.cpp"
 using namespace std;
 
 class tool { // протокласс для оружия и брони
@@ -44,6 +46,8 @@ public:
 	};
 
 	weapon() : distance(0), damage(0) {}
+
+	int attackWeapon();
 
 };
 

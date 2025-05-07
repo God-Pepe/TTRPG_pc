@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include"chooseType.cpp"
 #include"inventory.cpp"
 using namespace std;
 
@@ -57,7 +58,7 @@ public:
   };
 
 };
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Player : public Character {
   
@@ -65,6 +66,9 @@ public:
 
   int hp = (rand() % 12 + 1) + 10;
   int hpd = hp;
+
+
+  int attack(weapon current);
 
   int heal(ThingForHeal current) {
     int h;
@@ -121,9 +125,9 @@ public:
   };
 
 
-}; // конец класса игрока
+};
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Enemy : public Character {
 public:
@@ -145,4 +149,3 @@ public:
   };
 
 };
-

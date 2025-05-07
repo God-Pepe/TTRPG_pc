@@ -1,4 +1,4 @@
-//глоавный файл
+//главный файл
 #include <iostream>
 #include <string>
 #include"character.cpp"
