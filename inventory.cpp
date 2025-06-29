@@ -1,7 +1,12 @@
 #include<iostream>
 #include<vector>
-#include"chooseType.cpp"
+#include<map>
 using namespace std;
+
+map <string, pair <int, int>> WeaponList =
+{{"sword", {1, 10}},
+{"TwoHandsSword", {1, 12}},
+};
 
 class tool { // протокласс для оружия и брони
 public:
@@ -25,15 +30,15 @@ public:
 class weapon : public tool {
 public:
 
-	int distance;
+	//int distance;
 
-	int get_distance() {
-		return distance;
-	};
+	//int get_distance() {
+	//	return distance;
+	//};
 
-	void set_distance(int dist) {
-		distance = dist;
-	};
+	//void set_distance(int dist) {
+	//	distance = dist;
+	//};
 
 	int damage;
 
@@ -45,7 +50,7 @@ public:
 		damage = dmg;
 	};
 
-	weapon() : distance(0), damage(0) {}
+	weapon() : damage(0) {} //distance(0), вернуть, когда сделаю графический интерфейс
 
 	int attackWeapon();
 

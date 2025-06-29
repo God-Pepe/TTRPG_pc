@@ -1,151 +1,144 @@
 #include <iostream>
 #include <string>
-#include"chooseType.cpp"
+#include"creatCharacter.cpp"
 #include"inventory.cpp"
 using namespace std;
 
+// приставка "d" после HP от слова "dynamic"
+
 class Character {
-
-  //void movement() {} // передвижение по полям  (сделать, когда займусь графической частью)
-  
 public:
-  int hp; // эталон HP
+	int hp;
 
-  int hpd; // изменяемое значение HP
-  int att;
+	int get_hp() {
+		return hp;
+	};
 
-  void queue(); // определяет кто первый ходит
-  
-  Character() : att(0) , hpd(0), level(0), exp(0) {}
+	void set_hp(int hit) {
+		hp = hit;
+	};
 
-  int get_hpd() {
-    return hpd; 
-  };
 
-  void set_hpd(int h) {
-    hpd = h;
-  };
+    int hpd;
 
-  int get_att() {
-    return att = (rand() % 8 + 1);
-  };
+    int get_hpd() {
+    	return hpd;
+    };
 
-  void set_att(int a) {
-    att = a;
-  };
+    void set_hpd(int hitd) {
+    	hpd = hitd;
+    };
 
-  int attack();
+    int exp; // опыт
 
-  int heal();
+    int get_exp() {
+    	return exp;
+    };
 
-  int level;
-  int exp;
+    void set_exp(int xp) {
+    	exp = xp;
+    };
 
-  int get_exp() {
-    return exp;
-  };
 
-  void set_exp(int xp) {
-    exp = xp;
-  };
+    int level;
 
-  int get_level() {
-    return level;
-  };
+    int get_level() {
+    	return level;
+    };
 
-  void set_level(int lv) {
-    level = lv;
-  };
+    void set_level(int grade) {
+    	level = grade;
+    };
+
+
+    int intelect; //интелект
+
+	int get_intelect() {
+		return intelect;
+	};
+
+	void set_intelect (int mind) {
+		intelect = mind;
+	};
+
+
+	int strength; // сила
+
+	int get_strength() {
+		return strength;
+	};
+
+	void set_strength(int power) {
+		strength = power;
+	};
+
+
+	int dexterity; // ловкость
+
+	int get_dexterity() {
+		return dexterity;
+	};
+
+
+	void set_dexterity (int agility) {
+		dexterity = agility;
+	};
+
+
+	int accuracy; // метскость
+
+	int get_accuracy() {
+		return accuracy;
+	};
+
+	void set_accuracy(int precision) {
+		accuracy = precision;
+	};
+
+
+	string type; // игровой тип(класс)
+
+	string get_type() {
+		return type;
+	};
+
+	void set_type (string fella) {
+		type = fella;
+	};
+
+	int attack();
+
+	int take_damage();
+
+	int heal();
+
+	int take_exp();
+
+	int levelup();
 
 };
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 class Player : public Character {
-  
 public:
+	int hp;
+	int hpd;
 
-  int hp = (rand() % 12 + 1) + 10;
-  int hpd = hp;
+	int take_hp(int hit) {
+		hit = get_hpCr();
+		set_hp(hit);
+		hpd = get_hp();
 
+		return get_hp();
+	};
 
-  int attack(weapon current);
-
-  int heal(ThingForHeal current) {
-    int h;
-    h = get_hpd() + current.hpup;
-    if (h > hp) {
-      h = hpd;
-      set_hpd(h);
-    }
-
-    else if (h <= hp) {
-      set_hpd(h);
-    }
-
-    return get_hpd();
-  };
-
-  int take_exp(){ // получение exp
-    if (get_hpd() <= 0) {
-      int xp;
-      xp = (rand() % 10 + 1);
-      xp = get_exp() + xp;
-      set_exp(xp);
-
-      return get_hpd();
-    }
-
-    else if (get_hpd() > 0) {
-      return get_exp();
-    }
-  };
-
-  int level_up(){
-  
-    int n; //количество Exp для повышения уровня
-
-    if (get_exp() >= n) {
-      int l;
-      l = 1;
-      l = get_level() + l;
-      set_exp(l);
-
-      int xp;
-      xp = get_exp() - get_exp();
-      set_exp(xp);
-
-      n = n + 10;
-
-      return get_exp();
-    }
-
-    else if (get_exp() < n) {
-      return get_exp();
-    } // повышение уровня
-  };
+	void attack(int att, weapon current, Character foe){
+		current.attackWeapon();
+	} // Character ссылка на врага 
 
 
 };
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Enemy : public Character {
 public:
-
-  int hp = (rand() % 12 + 1) + 10;
-  int hpd = hp;
-
-  int attack(Character current) {
-    int h;
-
-    h = current.get_hpd() - get_att();
-    current.set_hpd(h);
-
-    return current.get_hpd();
-  };
-
-  void give_exp(Player current) {
-    current.take_exp();
-  };
-
 };
