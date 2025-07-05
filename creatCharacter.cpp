@@ -95,38 +95,38 @@ int creat_hpCr(int hpoints) {
 };
 
 
-string typeCr;
+//string typeCr; вернуть когда-нибудь завтра
 
-string get_typeCr() {
-	return typeCr;
-};
+//string get_typeCr() {
+//	return typeCr;
+//};
+//
+//void set_typeCr (string fella) {
+//	typeCr = fella;
+//};
 
-void set_typeCr (string fella) {
-	typeCr = fella;
-};
+//string creaCrt_typeCr(string fella) {
+//	while(true) {
+//		if (fella == "wizzard") {
+//			set_typeCr(fella);
+//			break;
+//		}
 
-string creaCrt_typeCr(string fella) {
-	while(true) {
-		if (fella == "wizzard") {
-			set_typeCr(fella);
-			break;
-		}
+//		else if (fella == "warrior") {
+//			set_typeCr(fella);
+//			break;
+//		}
 
-		else if (fella == "warrior") {
-			set_typeCr(fella);
-			break;
-		}
+//		else if (fella == "archer") {
+//			set_typeCr(fella);
+//			break;
+//		}
 
-		else if (fella == "shooter") {
-			set_typeCr(fella);
-			break;
-		}
+//		else {
+//			continue;
+//		}
+//	}
 
-		else {
-			continue;
-		}
-	}
-
-	return get_typeCr();
-};
+//	return get_typeCr();
+//};
 

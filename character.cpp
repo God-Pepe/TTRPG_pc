@@ -132,9 +132,51 @@ public:
 		return get_hp();
 	};
 
-	void attack(int att, weapon current, Character foe){
-		current.attackWeapon();
-	} // Character ссылка на врага 
+	int attack(int choose, int WeaponHit, weapon current, Character fighter) {
+		cin >> choose;
+
+		if (choose == 1) {
+			int dmg; 
+			dmg = (rand() % WeaponList["sword"].first + WeaponList["sword"].second);
+			current.set_damage(dmg);
+
+			WeaponHit = current.get_damage();
+		}
+
+		else if (choose == 2) {
+			int dmg;
+			dmg = (rand() % WeaponList["Bow"].first + WeaponList["Bow"].second);
+			current.set_damage(dmg);
+
+			WeaponHit = current.get_damage();
+		}
+
+		else if (choose == 3) {
+			int dmg;
+			dmg = (rand() % WeaponList["Sickles"].first + WeaponList["Sickles"].second);
+			current.set_damage(dmg);
+
+			WeaponHit = current.get_damage();
+		}
+
+		else if (choose == 4) {
+			int dmg;
+			dmg = (rand() % WeaponList["FireArrow"].first + WeaponList["FireArrow"].second);
+			current.set_damage(dmg);
+
+			WeaponHit = current.get_damage();
+		}
+
+		else if (choose >= 5) {
+			int dmg;
+			dmg = (rand() % WeaponList["Dirk"].first + WeaponList["Dirk"].second);
+			current.set_damage(dmg);
+
+			WeaponHit = current.get_damage();
+		} 
+		
+		return WeaponHit;
+	}; // Character ссылка на врага 
 
 
 };

@@ -5,13 +5,9 @@ using namespace std;
 
 map <string, pair <int, int>> WeaponList =
 {{"sword", {1, 10}},
-{"TwoHandsSword", {1, 12}},
 {"Bow", {1, 10}},
-{"Halberd", {1, 10}},
-{"Sickles", {2, 12}},
-{"Crossbow", {1, 12}},
+{"Sickles", {1, 6}},
 {"FireArrow", {1, 10}},
-{"GustOfWind", {1, 12}},
 {"Dirk", {1, 8}}
 };
 
@@ -58,8 +54,6 @@ public:
 	};
 
 	weapon() : damage(0) {} //distance(0), вернуть, когда сделаю графический интерфейс
-
-	int attackWeapon();
 
 };
 
