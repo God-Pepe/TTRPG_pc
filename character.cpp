@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include<map>
 #include"creatCharacter.cpp"
 #include"inventory.cpp"
 using namespace std;
@@ -127,6 +128,7 @@ public:
 	int take_hp(int hit) {
 		hit = get_hpCr();
 		set_hp(hit);
+		hp = get_hpCr();
 		hpd = get_hp();
 
 		return get_hp();
@@ -174,8 +176,11 @@ public:
 
 			WeaponHit = current.get_damage();
 		} 
-		
-		return WeaponHit;
+		int hitpoint;
+		hitpoint = fighter.get_hp() - current.get_damage();
+		fighter.set_hp(hitpoint);
+
+		return fighter.get_hp();
 	}; // Character ссылка на врага 
 
 
@@ -183,4 +188,50 @@ public:
 
 class Enemy : public Character {
 public:
+
+	int hp;
+	int hpd;
+
+	int take_hp(int hit) {
+		hit = get_hpCr();
+		set_hp(hit);
+		hp = get_hpCr();
+		hpd = get_hp();
+
+		return get_hp();
+	};
+
+	int attack (int RandomAttack, int WeaponHit, weapon arsenal, Character hero) {
+		RandomAttack = (rand() % 3 + 1);
+
+		if (RandomAttack == 1) {
+			int dmg;
+			dmg = (rand() % WeaponList["sword"].first + WeaponList["sword"].second);
+			arsenal.set_damage(dmg);
+
+			WeaponHit = arsenal.get_damage();
+		}
+
+		else if (RandomAttack = 2) {
+			int dmg;
+			dmg = (rand() % WeaponList["bow"].first + WeaponList["bow"].second);
+			arsenal.set_damage(dmg);
+
+			WeaponHit = arsenal.get_damage();
+		}
+
+		else if (RandomAttack == 3) {
+			int dmg;
+			dmg = (rand() % WeaponList["FireArrow"].first + WeaponList["FireArrow"].second);
+			arsenal.set_damage(dmg);
+
+			WeaponHit = arsenal.get_damage();
+		}
+
+		int hitpoint;
+		hitpoint = hero.get_hp() - arsenal.get_damage();
+		hero.set_hp(hitpoint);
+
+		return hero.get_hp();
+	};
 };

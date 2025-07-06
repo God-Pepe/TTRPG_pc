@@ -88,7 +88,7 @@ void set_hpCr(int hpoints) {
 };
 
 int creat_hpCr(int hpoints) {
-	hpoints = (rand() % 4 + 1) + 2;
+	hpoints = (rand() % 12 + 1) + 10;
 	set_hpCr(hpoints);
 
 	return get_hpCr();

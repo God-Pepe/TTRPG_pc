@@ -4,11 +4,11 @@
 using namespace std;
 
 map <string, pair <int, int>> WeaponList =
-{{"sword", {1, 10}},
-{"Bow", {1, 10}},
+{{"sword", {1, 8}},
+{"Bow", {1, 8}},
 {"Sickles", {1, 6}},
 {"FireArrow", {1, 10}},
-{"Dirk", {1, 8}}
+{"Dirk", {1, 6}}
 };
 
 class tool { // протокласс для оружия и брони
