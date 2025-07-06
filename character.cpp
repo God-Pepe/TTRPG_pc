@@ -183,7 +183,12 @@ public:
 		return fighter.get_hp();
 	}; // Character ссылка на врага 
 
-
+	void die() {
+		if (hpd <= 0) {
+			delete this;
+		}
+    };
+    
 };
 
 class Enemy : public Character {
@@ -212,7 +217,7 @@ public:
 			WeaponHit = arsenal.get_damage();
 		}
 
-		else if (RandomAttack = 2) {
+		else if (RandomAttack == 2) {
 			int dmg;
 			dmg = (rand() % WeaponList["bow"].first + WeaponList["bow"].second);
 			arsenal.set_damage(dmg);
@@ -234,4 +239,10 @@ public:
 
 		return hero.get_hp();
 	};
+
+	void die() {
+		if (hpd <= 0) {
+			delete this;
+		}
+	}
 };
