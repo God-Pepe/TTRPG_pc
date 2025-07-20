@@ -117,22 +117,58 @@ public:
 
 	int levelup();
 
+	int take_hp(int hit) {
+		creat_hpCr();
+		hit = get_hpCr();
+		set_hp(hit);
+		hp = get_hp();
+		hpd = get_hp();
+
+		return get_hp();
+	};
+
+	int take_intelect(int mind) {
+		creat_intelectCr();
+		mind = get_intelectCr();
+		mind = (rand() % 4 + 1) + 2;
+		set_intelect(mind);
+		intelect = get_intelect();
+
+		return get_intelect();
+	};
+
+	int take_strength(int power) {
+		creat_strengthCr();
+		power = get_strengthCr();
+		set_strength(power);
+		strength = get_strength();
+
+		return get_strength();
+	};
+
+	int take_dexterity(int agility) {
+		creat_dexterityCr();
+		agility = get_dexterityCr();
+		set_dexterity(agility);
+		dexterity = get_dexterity();
+
+		return get_dexterity();
+	};
+
+	int take_accuracy(int precision) {
+		creat_accuracyCr();
+		precision = get_accuracyCr();
+		set_accuracy(precision);
+		accuracy = get_accuracy();
+
+		return get_accuracy();
+	};
+
 };
 
 
 class Player : public Character {
 public:
-	int hp;
-	int hpd;
-
-	int take_hp(int hit) {
-		hit = get_hpCr();
-		set_hp(hit);
-		hp = get_hpCr();
-		hpd = get_hp();
-
-		return get_hp();
-	};
 
 	int attack(int choose, int WeaponHit, weapon current, Character fighter) {
 		cin >> choose;

@@ -14,8 +14,8 @@ void set_intelectCr (int mind) {
 	intelectCr = mind;
 };
 
-int creat_intelectCr(int mind) {
-	mind = (rand() % 4 + 1) + 2;
+int creat_intelectCr() {
+	int mind = (rand() % 4 + 1) + 2;
 	set_intelectCr(mind);
 
 	return get_intelectCr();
@@ -32,8 +32,8 @@ void set_strengthCr(int power) {
 	strengthCr = power;
 };
 
-int crreat_strengthCr(int power) {
-	power = (rand() % 4 + 1) + 2;
+int creat_strengthCr() {
+	int power = (rand() % 4 + 1) + 2;
 	set_strengthCr(power);
 
 	return get_strengthCr();
@@ -51,8 +51,8 @@ void set_dexterityCr (int agility) {
 	dexterityCr = agility;
 };
 
-int creat_dexterityCr(int agility) {
-	agility = (rand() % 4 + 1) + 2;
+int creat_dexterityCr() {
+	int agility = (rand() % 4 + 1) + 2;
 	set_dexterityCr(agility);
 
 	return get_dexterityCr();
@@ -69,8 +69,8 @@ void set_accuracyCr(int precision) {
 	accuracyCr = precision;
 };
 
-int creat_accuracyCr(int precision) {
-	precision = (rand() % 4 + 1) + 2;
+int creat_accuracyCr() {
+	int precision = (rand() % 4 + 1) + 2;
 	set_accuracyCr(precision);
 
 	return get_accuracyCr();
@@ -87,46 +87,46 @@ void set_hpCr(int hpoints) {
 	hpCr = hpoints;
 };
 
-int creat_hpCr(int hpoints) {
-	hpoints = (rand() % 12 + 1) + 10;
+int creat_hpCr() {
+	int hpoints = (rand() % 12 + 1) + 10;
 	set_hpCr(hpoints);
 
 	return get_hpCr();
 };
 
 
-//string typeCr; вернуть когда-нибудь завтра
+string typeCr; // вернуть когда-нибудь завтра
 
-//string get_typeCr() {
-//	return typeCr;
-//};
-//
-//void set_typeCr (string fella) {
-//	typeCr = fella;
-//};
+string get_typeCr() {
+	return typeCr;
+};
 
-//string creaCrt_typeCr(string fella) {
-//	while(true) {
-//		if (fella == "wizzard") {
-//			set_typeCr(fella);
-//			break;
-//		}
+void set_typeCr (string fella) {
+	typeCr = fella;
+};
 
-//		else if (fella == "warrior") {
-//			set_typeCr(fella);
-//			break;
-//		}
+string creaCrt_typeCr(string fella) {
+	while(true) {
+		if (fella == "wizzard") {
+			set_typeCr(fella);
+			break;
+		}
 
-//		else if (fella == "archer") {
-//			set_typeCr(fella);
-//			break;
-//		}
+		else if (fella == "warrior") {
+			set_typeCr(fella);
+			break;
+		}
 
-//		else {
-//			continue;
-//		}
-//	}
+		else if (fella == "archer") {
+			set_typeCr(fella);
+			break;
+		}
 
-//	return get_typeCr();
-//};
+		else {
+			continue;
+		}
+	}
+
+	return get_typeCr();
+};
 
