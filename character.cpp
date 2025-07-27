@@ -1,4 +1,5 @@
 #include <iostream>
+#include<vector>
 #include <string>
 #include<map>
 #include"creatCharacter.cpp"
@@ -9,6 +10,9 @@ using namespace std;
 
 class Character {
 public:
+
+	vector<weapon> bagpack {};
+
 	int hp;
 
 	int get_hp() {
@@ -242,8 +246,9 @@ public:
 		return get_hp();
 	};
 
-	int attack (int RandomAttack, int WeaponHit, weapon arsenal, Character hero) {
-		RandomAttack = (rand() % 3 + 1);
+	int attack ( weapon arsenal, Character hero) {
+		int WeaponHit;
+		int RandomAttack = (rand() % 3 + 1);
 
 		if (RandomAttack == 1) {
 			int dmg;

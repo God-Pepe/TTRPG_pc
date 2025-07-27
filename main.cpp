@@ -2,30 +2,44 @@
 #include <string>
 #include<map>
 #include<vector>
-#include"creatCharacter.cpp"
+//#include"creatCharacter.cpp"
 #include"character.cpp"
-#include"inventory.cpp"
+//#include"inventory.cpp"
 using namespace std;
 
-/*class scene{
+class scene{
+public:
 
-    void startGame(character current) {
-        Player hero = new Player();
+    Player hero;
+
+    void startGame() {
+        hero = *(new Player());
     };
 
     int endGame() {
-        return 0;
+        exit(0);
     };
     void PlayerForm(Player current) {
-        if (current == nullptr) {
-            end_game();
+        if (&current == nullptr) {
+            endGame();
         }
     }
-    void creatEnemy(character fighter) {
-        Enemy fighter = new Enemy();
+    void creatEnemy() {
+        Enemy fighter = *(new Enemy());
     };
-}; */
+
+    void actionEnemy(Enemy fighter) {
+        fighter.attack(RandomAttack, WeaponHit, weapon arsenal, hero);
+    };
+
+    void actionPlayer(Player hero) {
+        cout << "выбирите действие: [1] -- атака" << '\n';
+    };
+}; 
 
 
 int main() {
+    scene land = *(new scene());
+
+    land.startGame();
 }

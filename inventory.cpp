@@ -25,9 +25,6 @@ public:
 		stabillity = stab;
 	};
 
-	void deterioration(); // поломка
-
-	void mending(); // починка
 };
 
 class weapon : public tool {
