@@ -109,13 +109,7 @@ public:
 
 	int attack();
 
-	int take_damage();
-
 	int heal();
-
-	int take_exp();
-
-	int levelup();
 
 	int take_hp(int hit) {
 		creat_hpCr();
@@ -130,7 +124,6 @@ public:
 	int take_intelect(int mind) {
 		creat_intelectCr();
 		mind = get_intelectCr();
-		mind = (rand() % 4 + 1) + 2;
 		set_intelect(mind);
 		intelect = get_intelect();
 
@@ -202,6 +195,11 @@ public:
 			dmg = (rand() % WeaponList["FireArrow"].first + WeaponList["FireArrow"].second);
 			current.set_damage(dmg);
 
+			int hpnew;
+			hpnew = get_hpd() - 2;
+			set_hpd(hpnew);
+
+
 			WeaponHit = current.get_damage();
 		}
 
@@ -213,11 +211,13 @@ public:
 			WeaponHit = current.get_damage();
 		} 
 		int hitpoint;
-		hitpoint = fighter.get_hp() - current.get_damage();
-		fighter.set_hp(hitpoint);
+		hitpoint = fighter.get_hpd() - current.get_damage();
+		fighter.set_hpd(hitpoint);
 
-		return fighter.get_hp();
+		return fighter.get_hpd();
 	}; // Character ссылка на врага 
+
+	
 
 	void die() {
 		if (hpd <= 0) {
@@ -270,8 +270,8 @@ public:
 		}
 
 		int hitpoint;
-		hitpoint = hero.get_hp() - arsenal.get_damage();
-		hero.set_hp(hitpoint);
+		hitpoint = hero.get_hpd() - arsenal.get_damage();
+		hero.set_hpd(hitpoint);
 
 		return hero.get_hp();
 	};

@@ -64,7 +64,7 @@ public:
 
 };
 
-class consumables {
+/*class consumables {
 public:
 	int quantity; // количество
 
@@ -92,23 +92,24 @@ public:
 		return hpup;
 	};
 
-	void set_hpup(int hu) {
-		hpup = hu;
+	void set_hpup(int hitup) {
+		hpup = hitup;
 	};
 
-	int use() {
+	int useHeal() {
 
-		int q;
-		q = get_quantity() - 1;
-		set_quantity(q);
+		int amount;
+		amount = get_quantity() - 1;
+		set_quantity(amount);
 
-		int hu;
-		hu = get_hpup();
-		hu  = (rand() % 8 + 1);
-		set_hpup(hu);
+		int hitup;
+		hitup = get_hpup();
+		hitup  = (rand() % 8 + 1);
+		set_hpup(hitup);
+		
 		return get_hpup();
 	};
-};
+}; 
 
 class ammo : public consumables { // боеприпасы (стрелы)
 	int use() {
@@ -118,4 +119,4 @@ class ammo : public consumables { // боеприпасы (стрелы)
 
 		return get_quantity();
 	};
-};
+}; */

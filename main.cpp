@@ -1,21 +1,30 @@
 #include <iostream>
 #include <string>
+#include<map>
+#include<vector>
 #include"creatCharacter.cpp"
 #include"character.cpp"
 #include"inventory.cpp"
 using namespace std;
-// нужен вестор с нписишками
-class scene{
 
-	// void startGame();
-	// void endGame();
-	// void PlayerForm() {
-    //     if (hero == nullptr) {
-    //         end_game();
-    //     }
-    // }
-    // void creatEnemy();
-};
+/*class scene{
+
+    void startGame(character current) {
+        Player hero = new Player();
+    };
+
+    int endGame() {
+        return 0;
+    };
+    void PlayerForm(Player current) {
+        if (current == nullptr) {
+            end_game();
+        }
+    }
+    void creatEnemy(character fighter) {
+        Enemy fighter = new Enemy();
+    };
+}; */
 
 
 int main() {
