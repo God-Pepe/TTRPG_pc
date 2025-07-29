@@ -8,10 +8,18 @@ using namespace std;
 
 // приставка "d" после HP от слова "dynamic"
 
+
 class Character {
 public:
 
-	vector<weapon> bagpack {};
+	/*weapon sword = *(new weapon());
+	weapon longsword = *(new weapon());
+	weapon bow  = *(new weapon());
+	weapon crossbow = *(new weapon());
+	weapon sickles = *(new weapon());
+	weapon dirk = *(new weapon());
+
+	vector<weapon> bagpack = {sword, longsword, bow, crossbow, sickles, dirk};*/
 
 	int hp;
 
@@ -163,62 +171,79 @@ public:
 
 };
 
+//===================================================================================================================================================
 
 class Player : public Character {
 public:
 
-	int attack(int choose, int WeaponHit, weapon current, Character fighter) {
-		cin >> choose;
+	weapon sword = *(new weapon());
+	weapon longsword = *(new weapon());
+	weapon bow  = *(new weapon());
+	weapon crossbow = *(new weapon());
+	weapon sickles = *(new weapon());
+	weapon dirk = *(new weapon());
 
-		if (choose == 1) {
-			int dmg; 
-			dmg = (rand() % WeaponList["sword"].first + WeaponList["sword"].second);
-			current.set_damage(dmg);
+	vector<weapon> bagpack = {sword, longsword, bow, crossbow, sickles, dirk};
 
-			WeaponHit = current.get_damage();
-		}
+	int attack( weapon current, Character fighter) {
+		
+		sword.set_title("Меч");
+        longsword.set_title("Длинный меч");
+        bow.set_title("Лук");
+        crossbow.set_title("Арбалет");
+        sickles.set_title("Серпы");
+        dirk.set_title("Кинжал");
 
-		else if (choose == 2) {
-			int dmg;
-			dmg = (rand() % WeaponList["Bow"].first + WeaponList["Bow"].second);
-			current.set_damage(dmg);
+        int WeaponHit;
 
-			WeaponHit = current.get_damage();
-		}
+        int choose;
 
-		else if (choose == 3) {
-			int dmg;
-			dmg = (rand() % WeaponList["Sickles"].first + WeaponList["Sickles"].second);
-			current.set_damage(dmg);
+        cout << "выбирите чем вы хотите атаковать" << '\n' << "инвентарь:" << '\n';
+        cout << "[1] -- Меч" << '\n';
+        cout << "[2] -- Длинный меч" << '\n';
+        cout << "[3] -- Лук" << '\n';
+        cout << "[4] -- Арбалет" << '\n';
+        cout << "[5] -- Серпы" << '\n';
+        cout << "[6] -- Кинжал" << '\n';
 
-			WeaponHit = current.get_damage();
-		}
+        cin >> choose;
 
-		else if (choose == 4) {
-			int dmg;
-			dmg = (rand() % WeaponList["FireArrow"].first + WeaponList["FireArrow"].second);
-			current.set_damage(dmg);
+        if (choose == 1) {
+        	sword.weaponAttack();
+        	WeaponHit = sword.get_damage();
+        }
 
-			int hpnew;
-			hpnew = get_hpd() - 2;
-			set_hpd(hpnew);
+        else if (choose == 2) {
+        	longsword.weaponAttack();
+        	WeaponHit = longsword.get_damage();
+        }
 
+        else if (choose == 3) {
+        	bow.weaponAttack();
+        	WeaponHit = bow.get_damage();
+        }
 
-			WeaponHit = current.get_damage();
-		}
+        else if (choose == 4) {
+        	crossbow.weaponAttack();
+        	WeaponHit = crossbow.get_damage();
+        }
 
-		else if (choose >= 5) {
-			int dmg;
-			dmg = (rand() % WeaponList["Dirk"].first + WeaponList["Dirk"].second);
-			current.set_damage(dmg);
+        else if (choose == 5) {
+        	sickles.get_damage();
+        	WeaponHit = sickles.get_damage();
+        }
 
-			WeaponHit = current.get_damage();
-		} 
-		int hitpoint;
-		hitpoint = fighter.get_hpd() - current.get_damage();
-		fighter.set_hpd(hitpoint);
+        else if (choose == 6) {
+        	dirk.get_damage();
+        	WeaponHit = dirk.get_damage();
+        }
 
-		return fighter.get_hpd();
+        int hpdnew;
+
+        hpdnew = fighter.get_hpd() - WeaponHit;
+        fighter.set_hpd(hpdnew);
+
+        return fighter.get_hpd();
 	}; // Character ссылка на врага 
 
 	
@@ -231,8 +256,18 @@ public:
     
 };
 
+//===================================================================================================================================================
+
 class Enemy : public Character {
 public:
+	weapon swordE = *(new weapon());
+	weapon longswordE = *(new weapon());
+	weapon bowE  = *(new weapon());
+	weapon crossbowE = *(new weapon());
+	weapon sicklesE = *(new weapon());
+	weapon dirkE = *(new weapon());
+
+	vector<weapon> bagpackE = {swordE, longswordE, bowE, crossbowE, sicklesE, dirkE};
 
 	int hp;
 	int hpd;
@@ -247,34 +282,48 @@ public:
 	};
 
 	int attack ( weapon arsenal, Character hero) {
-		int WeaponHit;
-		int RandomAttack = (rand() % 3 + 1);
-
-		if (RandomAttack == 1) {
-			int dmg;
-			dmg = (rand() % WeaponList["sword"].first + WeaponList["sword"].second);
-			arsenal.set_damage(dmg);
-
-			WeaponHit = arsenal.get_damage();
-		}
-
-		else if (RandomAttack == 2) {
-			int dmg;
-			dmg = (rand() % WeaponList["bow"].first + WeaponList["bow"].second);
-			arsenal.set_damage(dmg);
-
-			WeaponHit = arsenal.get_damage();
-		}
-
-		else if (RandomAttack == 3) {
-			int dmg;
-			dmg = (rand() % WeaponList["FireArrow"].first + WeaponList["FireArrow"].second);
-			arsenal.set_damage(dmg);
-
-			WeaponHit = arsenal.get_damage();
-		}
-
+		
+		swordE.set_title("Меч");
+        longswordE.set_title("Длинный меч");
+        bowE.set_title("Лук");
+        crossbowE.set_title("Арбалет");
+        sicklesE.set_title("Серпы");
+        dirkE.set_title("Кинжал");
+        
 		int hitpoint;
+		int randomAttack = (rand() % 6 + 1);
+
+		if (randomAttack == 1) {
+			swordE.weaponAttack();
+			hitpoint = swordE.get_damage();
+		}
+		
+		else if (randomAttack == 2) {
+			longswordE.weaponAttack();
+			hitpoint = longswordE.get_damage();
+		}
+
+		else if (randomAttack == 3) {
+			bowE.weaponAttack();
+			hitpoint = bowE.get_damage();
+		}
+
+		else if (randomAttack == 4) {
+			crossbowE.weaponAttack();
+			hitpoint = crossbowE.get_damage();
+		}
+
+		else if (randomAttack == 5) {
+			sicklesE.weaponAttack();
+			hitpoint = sicklesE.get_damage();
+		}
+
+		else if (randomAttack == 6) {
+			dirkE.weaponAttack();
+			hitpoint = dirkE.get_damage();
+		}
+
+		
 		hitpoint = hero.get_hpd() - arsenal.get_damage();
 		hero.set_hpd(hitpoint);
 

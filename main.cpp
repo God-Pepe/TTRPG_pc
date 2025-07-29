@@ -11,6 +11,7 @@ class scene{
 public:
 
     Player hero;
+    Enemy fighter;
 
     void startGame() {
         hero = *(new Player());
@@ -25,15 +26,19 @@ public:
         }
     }
     void creatEnemy() {
-        Enemy fighter = *(new Enemy());
+        fighter = *(new Enemy());
     };
 
     void actionEnemy(Enemy fighter) {
-        fighter.attack(RandomAttack, WeaponHit, weapon arsenal, hero);
+        fighter.attack(swordE, longswordE, bowE, crossbowE, sicklesE, dirkE, hero);
     };
 
-    void actionPlayer(Player hero) {
+    void actionPlayer(Player hero, int act) {
         cout << "выбирите действие: [1] -- атака" << '\n';
+        cin >> act;
+        if (act == 1) {
+            hero.attack(fighter, sword, longsword, bow, crossbow, sickles, dirk);
+        }
     };
 }; 
 

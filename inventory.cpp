@@ -1,44 +1,77 @@
 #include<iostream>
 #include<vector>
+#include<string>
 #include<map>
 using namespace std;
 
 map <string, pair <int, int>> WeaponList =
-{{"sword", {1, 8}},
-{"Bow", {1, 8}},
-{"Sickles", {1, 6}},
-{"FireArrow", {1, 10}},
-{"Dirk", {1, 6}}
+{{"Меч", {8, 1}},
+{"Длинный меч", {10, 1}},
+{"Лук", {8, 1}},
+{"Арбалет", {10, 1}},
+{"Серпы", {6, 1}},
+{"Кинжал", {4, 1}}
 };
 
-class tool { // протокласс для оружия и брони
-public:
-	int stabillity; // прочность
 
-	tool() : stabillity(0) {}
 
-	int get_stabillity() {
-		return stabillity;
-	};
-
-	void set_stabillity(int stab) {
-		stabillity = stab;
-	};
-
-};
-
-class weapon : public tool {
+class weapon {
 public:
 
-	//int distance;
+	/*int distance;
 
-	//int get_distance() {
-	//	return distance;
-	//};
+	int get_distance() {
+		return distance;
+	};
 
-	//void set_distance(int dist) {
-	//	distance = dist;
-	//};
+	void set_distance(int dist) {
+		distance = dist;
+	};*/
+
+	string title;
+
+	string get_title() {
+		return title;
+	};
+
+	void set_title(string appellative) {
+		title = appellative;
+	};
+
+	int weaponAttack() {
+		int dmg;
+		if (title == "Меч") {
+			dmg = (rand() % WeaponList["Меч"].first + WeaponList["Меч"].second);
+			set_damage(dmg);
+		}
+
+		else if (title == "Длинный меч" && title == "длинный") {
+			dmg = (rand() % WeaponList["Длинный меч"].first + WeaponList["Длинный меч"].second);
+			set_damage(dmg);
+		}
+
+		else if (title == "Лук") {
+			dmg = (rand() % WeaponList["Лук"].first + WeaponList["Лук"].second);
+			set_damage(dmg);
+		}
+
+		else if (title == "Арбалет") {
+			dmg = (rand() % WeaponList["Арбалет"].first + WeaponList["Арбалет"].second);
+			set_damage(dmg);
+		}
+
+		else if (title == "Серпы") {
+			dmg = (rand() % WeaponList["Серпы"].first + WeaponList["Серпы"].second);
+			set_damage(dmg);
+		}
+
+		else if (title == "Кинжал") {
+			dmg = (rand() % WeaponList["Кинжал"].first + WeaponList["Кинжал"].second);
+			set_damage(dmg);
+		} 
+
+		return get_damage();
+	};
 
 	int damage;
 
@@ -50,11 +83,11 @@ public:
 		damage = dmg;
 	};
 
-	weapon() : damage(0) {} //distance(0), вернуть, когда сделаю графический интерфейс
+	weapon() : title(" "), damage(0) {} //distance(0), вернуть, когда сделаю графический интерфейс
 
 };
 
-class armor  : public tool {
+class armor {
 public:
 
 	void repulse(); // поглошение урона

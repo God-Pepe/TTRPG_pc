@@ -117,11 +117,6 @@ string creaCrt_typeCr(string fella) {
 			break;
 		}
 
-		else if (fella == "archer") {
-			set_typeCr(fella);
-			break;
-		}
-
 		else {
 			continue;
 		}
