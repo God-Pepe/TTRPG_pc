@@ -123,7 +123,8 @@ public:
 
 	int heal();
 
-	int take_hp(int hit) {
+	int take_hp() {
+		int hit;
 		creat_hpCr();
 		hit = get_hpCr();
 		set_hp(hit);
@@ -133,7 +134,8 @@ public:
 		return get_hp();
 	};
 
-	int take_intelect(int mind) {
+	int take_intelect() {
+		int mind;
 		creat_intelectCr();
 		mind = get_intelectCr();
 		set_intelect(mind);
@@ -142,7 +144,8 @@ public:
 		return get_intelect();
 	};
 
-	int take_strength(int power) {
+	int take_strength() {
+		int power;
 		creat_strengthCr();
 		power = get_strengthCr();
 		set_strength(power);
@@ -151,7 +154,8 @@ public:
 		return get_strength();
 	};
 
-	int take_dexterity(int agility) {
+	int take_dexterity() {
+		int agility;
 		creat_dexterityCr();
 		agility = get_dexterityCr();
 		set_dexterity(agility);
@@ -160,7 +164,8 @@ public:
 		return get_dexterity();
 	};
 
-	int take_accuracy(int precision) {
+	int take_accuracy() {
+		int precision;
 		creat_accuracyCr();
 		precision = get_accuracyCr();
 		set_accuracy(precision);
@@ -211,31 +216,37 @@ public:
         if (choose == 1) {
         	sword.weaponAttack();
         	WeaponHit = sword.get_damage();
+        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
         }
 
         else if (choose == 2) {
         	longsword.weaponAttack();
         	WeaponHit = longsword.get_damage();
+        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
         }
 
         else if (choose == 3) {
         	bow.weaponAttack();
         	WeaponHit = bow.get_damage();
+        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
         }
 
         else if (choose == 4) {
         	crossbow.weaponAttack();
         	WeaponHit = crossbow.get_damage();
+        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
         }
 
         else if (choose == 5) {
         	sickles.get_damage();
         	WeaponHit = sickles.get_damage();
+        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
         }
 
         else if (choose == 6) {
         	dirk.get_damage();
         	WeaponHit = dirk.get_damage();
+        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";   
         }
 
         int hpdnew;
@@ -272,15 +283,6 @@ public:
 	int hp;
 	int hpd;
 
-	int take_hp(int hit) {
-		hit = get_hpCr();
-		set_hp(hit);
-		hp = get_hpCr();
-		hpd = get_hp();
-
-		return get_hp();
-	};
-
 	int attack ( weapon arsenal, Character hero) {
 		
 		swordE.set_title("Меч");
@@ -291,43 +293,51 @@ public:
         dirkE.set_title("Кинжал");
         
 		int hitpoint;
+		int hpdelta;
 		int randomAttack = (rand() % 6 + 1);
 
 		if (randomAttack == 1) {
 			swordE.weaponAttack();
+			cout << "Вас атакуют: " << swordE.get_title() << '\n';
 			hitpoint = swordE.get_damage();
 		}
 		
 		else if (randomAttack == 2) {
 			longswordE.weaponAttack();
+			cout << "Вас атакуют: " << longswordE.get_title() << '\n';
 			hitpoint = longswordE.get_damage();
 		}
 
 		else if (randomAttack == 3) {
 			bowE.weaponAttack();
+			cout << "Вас атакуют: " << bowE.get_title() << '\n';
 			hitpoint = bowE.get_damage();
 		}
 
 		else if (randomAttack == 4) {
 			crossbowE.weaponAttack();
+			cout << "Вас атакуют: " << crossbowE.get_title() << '\n';
 			hitpoint = crossbowE.get_damage();
 		}
 
 		else if (randomAttack == 5) {
 			sicklesE.weaponAttack();
+			cout << "Вас атакуют: " << sicklesE.get_title() << '\n';
 			hitpoint = sicklesE.get_damage();
 		}
 
 		else if (randomAttack == 6) {
 			dirkE.weaponAttack();
+			cout << "Вас атакуют: " << dirkE.get_title() << '\n';
 			hitpoint = dirkE.get_damage();
 		}
 
 		
-		hitpoint = hero.get_hpd() - arsenal.get_damage();
-		hero.set_hpd(hitpoint);
+		hpdelta = hero.get_hpd() - hitpoint;
+		hero.set_hpd(hpdelta);
+		cout << "Вам нанесли " << hitpoint << ". " << "У вас осталось " << hero.get_hpd() << "/" << hero.get_hp() << " здровья!" << '\n';
 
-		return hero.get_hp();
+		return hero.get_hpd();
 	};
 
 	void die() {
