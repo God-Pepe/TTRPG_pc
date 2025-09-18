@@ -35,9 +35,7 @@ public:
         exit(0);
     };
 
-    void PlayerForm(Player current) {
-        // Можно добавить логику формы игрока позже
-    }
+    void PlayerForm(Player current);
 
     void creatEnemy() {
         fighter = Enemy();
