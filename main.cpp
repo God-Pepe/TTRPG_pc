@@ -1,51 +1,46 @@
 #include <iostream>
 #include <string>
-#include<map>
-#include<vector>
-//#include"creatCharacter.cpp"
-#include"character.cpp"
-//#include"inventory.cpp"
+#include <map>
+#include <random>
+#include <vector>
+#include <ctime>
+#include "character.cpp"
 using namespace std;
 
-class scene{
+class scene {
 public:
+
+    int lenth;
 
     Player hero;
     Enemy fighter;
 
     void startGame() {
-
-        hero = *(new Player());
+        hero = Player();
         hero.take_hp();
         hero.take_intelect();
         hero.take_strength();
         hero.take_dexterity();
         hero.take_accuracy();
 
-        cout << "Ваше здровье: " << hero.get_hpd() << '\n';
+        cout << "Ваше здоровье: " << hero.get_hpd() << '\n';
         cout << "Ваш интеллект: " << hero.get_intelect() << '\n';
         cout << "Ваша сила: " << hero.get_strength()  << '\n';
         cout << "Ваша ловкость: " << hero.get_dexterity() << '\n';
-        cout << "Ваша метскость: " << hero.get_accuracy() << '\n';
+        cout << "Ваша меткость: " << hero.get_accuracy() << '\n';
         cout << " " << '\n';
-
-        set_hpCr(0);
-        set_intelectCr(0);
-        set_strengthCr(0);
-        set_dexterityCr(0);
-        set_accuracyCr(0);
     };
 
-    int endGame() {
+    void endGame() {
         exit(0);
     };
+
     void PlayerForm(Player current) {
-        if (&current == nullptr) {
-            endGame();
-        }
+        // Можно добавить логику формы игрока позже
     }
+
     void creatEnemy() {
-        fighter = *(new Enemy());
+        fighter = Enemy();
         fighter.take_hp();
         fighter.take_intelect();
         fighter.take_strength();
@@ -53,63 +48,75 @@ public:
         fighter.take_accuracy();
     };
 
-    void actionEnemy(Enemy fighter) {
+    void actionEnemy() {
         fighter.attack(fighter.bagpackE[0], hero);
     };
 
-    void actionPlayer(Player hero) {
+    void actionPlayer() {
         int act;
-        cout << "выбирите действие: [1] -- атака" << '\n';
+        cout << "Выберите действие:" << '\n' << "[1] -- атака" << '\n' << "[2] -- восстановить здоровье" << '\n' << "[3] -- попытаться сбежать" << '\n' << "Выбирите действие: ";
         cin >> act;
         if (act == 1) {
             hero.attack(hero.bagpack[0], fighter);
         }
+
+        else if (act == 2) {
+            hero.heal();
+        }
+
+        else if (act == 3){
+            int escapeChance;
+
+            escapeChance = (rand() % 3) + 1;
+
+            if (escapeChance == 1) {
+                cout << "Вы сбежали" << '\n';
+                endGame();
+            }
+
+            else {
+                cout << "У вас не получилось сбежать" << '\n';
+            }
+        };
     };
 
     void battle() {
         creatEnemy();
-
         cout << "На вас напали!" << '\n';
 
-        while(true) {
-            actionPlayer(hero);
-
-            if (fighter.hpd <= 0) {
-                fighter.die();
-                cout << "Вы победили!" << '\n';
-                break;
-            }
-
-            else if (fighter.hpd != 0) {
-                cout << "Ход врага!" << '\n';
-                continue;
-            }
-
-            actionEnemy(fighter);
-
-            if (hero.hpd <= 0) {
-                cout << "Вы погибли в схватке..." << '\n';
-                hero.die();
-                PlayerForm(hero);
-                break;
-            }
-
-            else if (hero.hpd != 0) {
+        while (true) {
+            if (hero.hpd > 0 && fighter.hpd > 0) {
                 cout << "Ваш ход! " << '\n';
-                continue;
-            }
+                actionPlayer();
 
+                if (fighter.hpd <= 0) {
+                    break;
+                }
+
+
+
+                cout << "Ход врага!" << '\n';
+                actionEnemy();
+
+                if (hero.hpd <= 0){
+                    break;
+                }
+            }
+        }
+
+        if (hero.hpd <= 0) {
+            cout << "Вы погибли в схватке..." << '\n';
+            endGame();
+        } else {
+            cout << "Вы победили врага!" << '\n';
         }
     };
-}; 
-
+};
 
 int main() {
-    scene land = *(new scene());
-
+    srand(static_cast<unsigned>(time(0)));
+    scene land;
     land.startGame();
-
     land.battle();
-
     return 0;
 }

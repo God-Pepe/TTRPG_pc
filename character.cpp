@@ -1,209 +1,150 @@
 #include <iostream>
-#include<vector>
+#include <vector>
 #include <string>
-#include<map>
-#include"creatCharacter.cpp"
-#include"inventory.cpp"
+#include <map>
+#include "creatCharacter.cpp"
+#include "inventory.cpp"
 using namespace std;
-
-// приставка "d" после HP от слова "dynamic"
-
 
 class Character {
 public:
-
-	/*weapon sword = *(new weapon());
-	weapon longsword = *(new weapon());
-	weapon bow  = *(new weapon());
-	weapon crossbow = *(new weapon());
-	weapon sickles = *(new weapon());
-	weapon dirk = *(new weapon());
-
-	vector<weapon> bagpack = {sword, longsword, bow, crossbow, sickles, dirk};*/
-
-	int hp;
-
-	int get_hp() {
-		return hp;
-	};
-
-	void set_hp(int hit) {
-		hp = hit;
-	};
-
-
+    int hp;
     int hpd;
-
-    int get_hpd() {
-    	return hpd;
-    };
-
-    void set_hpd(int hitd) {
-    	hpd = hitd;
-    };
-
-    int exp; // опыт
-
-    int get_exp() {
-    	return exp;
-    };
-
-    void set_exp(int xp) {
-    	exp = xp;
-    };
-
-
+    int exp;
     int level;
+    int intelect;
+    int strength;
+    int dexterity;
+    int accuracy;
+    string type;
 
-    int get_level() {
-    	return level;
+    int get_hp() { 
+    	return hp; 
+    };
+    void set_hp(int hit) { 
+    	hp = hit; 
+    };
+    
+    int get_hpd() { 
+    	return hpd; 
+    };
+    void set_hpd(int hitd) { 
+    	hpd = hitd; 
+    };
+    
+    int get_exp() { 
+    	return exp; 
+    };
+    void set_exp(int xp) { 
+    	exp = xp; 
+    };
+    
+    int get_level() { 
+    	return level; 
+    };
+    void set_level(int grade) { 
+    	level = grade; 
     };
 
-    void set_level(int grade) {
-    	level = grade;
+    int level_up();
+    
+    int get_intelect() { 
+    	return intelect; 
+    };
+    void set_intelect(int mind) { 
+    	intelect = mind; 
+    };
+    
+    int get_strength() { 
+    	return strength; 
+    };
+    void set_strength(int power) { 
+    	strength = power; 
+    };
+    
+    int get_dexterity() { 
+    	return dexterity; 
+    };
+    void set_dexterity(int agility) { 
+    	dexterity = agility; 
+    };
+    
+    int get_accuracy() { 
+    	return accuracy; 
+    };
+    void set_accuracy(int precision) { 
+    	accuracy = precision; 
+    };
+    
+    string get_type() { 
+    	return type; 
+    };
+    void set_type(string fella) { 
+    	type = fella; 
     };
 
+    int attack();
 
-    int intelect; //интелект
+    int heal();
 
-	int get_intelect() {
-		return intelect;
-	};
+    // Методы создания характеристик
+    int take_hp() {
+        int hit = creat_hpCr();
+        set_hp(hit);
+        hpd = hit;
+        return hit;
+    };
 
-	void set_intelect (int mind) {
-		intelect = mind;
-	};
+    int take_intelect() {
+        int mind = creat_intelectCr();
+        set_intelect(mind);
+        return mind;
+    };
 
+    int take_strength() {
+        int power = creat_strengthCr();
+        set_strength(power);
+        return power;
+    };
 
-	int strength; // сила
+    int take_dexterity() {
+        int agility = creat_dexterityCr();
+        set_dexterity(agility);
+        return agility;
+    };
 
-	int get_strength() {
-		return strength;
-	};
-
-	void set_strength(int power) {
-		strength = power;
-	};
-
-
-	int dexterity; // ловкость
-
-	int get_dexterity() {
-		return dexterity;
-	};
-
-
-	void set_dexterity (int agility) {
-		dexterity = agility;
-	};
-
-
-	int accuracy; // метскость
-
-	int get_accuracy() {
-		return accuracy;
-	};
-
-	void set_accuracy(int precision) {
-		accuracy = precision;
-	};
-
-
-	string type; // игровой тип(класс)
-
-	string get_type() {
-		return type;
-	};
-
-	void set_type (string fella) {
-		type = fella;
-	};
-
-	int attack();
-
-	int heal();
-
-	int take_hp() {
-		int hit;
-		creat_hpCr();
-		hit = get_hpCr();
-		set_hp(hit);
-		hp = get_hp();
-		hpd = get_hp();
-
-		return get_hp();
-	};
-
-	int take_intelect() {
-		int mind;
-		creat_intelectCr();
-		mind = get_intelectCr();
-		set_intelect(mind);
-		intelect = get_intelect();
-
-		return get_intelect();
-	};
-
-	int take_strength() {
-		int power;
-		creat_strengthCr();
-		power = get_strengthCr();
-		set_strength(power);
-		strength = get_strength();
-
-		return get_strength();
-	};
-
-	int take_dexterity() {
-		int agility;
-		creat_dexterityCr();
-		agility = get_dexterityCr();
-		set_dexterity(agility);
-		dexterity = get_dexterity();
-
-		return get_dexterity();
-	};
-
-	int take_accuracy() {
-		int precision;
-		creat_accuracyCr();
-		precision = get_accuracyCr();
-		set_accuracy(precision);
-		accuracy = get_accuracy();
-
-		return get_accuracy();
-	};
-
+    int take_accuracy() {
+        int precision = creat_accuracyCr();
+        set_accuracy(precision);
+        return precision;
+    };
 };
-
-//===================================================================================================================================================
 
 class Player : public Character {
 public:
+    weapon sword;
+    weapon longsword;
+    weapon bow;
+    weapon crossbow;
+    weapon sickles;
+    weapon dirk;
+    vector<weapon> bagpack;
 
-	weapon sword = *(new weapon());
-	weapon longsword = *(new weapon());
-	weapon bow  = *(new weapon());
-	weapon crossbow = *(new weapon());
-	weapon sickles = *(new weapon());
-	weapon dirk = *(new weapon());
-
-	vector<weapon> bagpack = {sword, longsword, bow, crossbow, sickles, dirk};
-
-	int attack( weapon current, Character fighter) {
-		
-		sword.set_title("Меч");
+    Player() {
+        sword.set_title("Меч");
         longsword.set_title("Длинный меч");
         bow.set_title("Лук");
         crossbow.set_title("Арбалет");
         sickles.set_title("Серпы");
         dirk.set_title("Кинжал");
+        bagpack = {sword, longsword, bow, crossbow, sickles, dirk};
+    }
 
-        int WeaponHit;
-
+    int attack(weapon current, Character& fighter) {
+        int WeaponHit = 0;
         int choose;
 
-        cout << "выбирите чем вы хотите атаковать" << '\n' << "инвентарь:" << '\n';
+        cout << "Выберите чем вы хотите атаковать:" << '\n' << "Инвентарь:" << '\n';
         cout << "[1] -- Меч" << '\n';
         cout << "[2] -- Длинный меч" << '\n';
         cout << "[3] -- Лук" << '\n';
@@ -211,138 +152,88 @@ public:
         cout << "[5] -- Серпы" << '\n';
         cout << "[6] -- Кинжал" << '\n';
 
+        cout << "Выбирите атаку: ";
         cin >> choose;
 
-        if (choose == 1) {
-        	sword.weaponAttack();
-        	WeaponHit = sword.get_damage();
-        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
+        if (choose >= 1 && choose <= 6) {
+            WeaponHit = bagpack[choose-1].weaponAttack();
+            cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
+        } else {
+            cout << "Неверный выбор!" << "\n";
+            return fighter.get_hpd();
         }
 
-        else if (choose == 2) {
-        	longsword.weaponAttack();
-        	WeaponHit = longsword.get_damage();
-        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
-        }
-
-        else if (choose == 3) {
-        	bow.weaponAttack();
-        	WeaponHit = bow.get_damage();
-        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
-        }
-
-        else if (choose == 4) {
-        	crossbow.weaponAttack();
-        	WeaponHit = crossbow.get_damage();
-        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
-        }
-
-        else if (choose == 5) {
-        	sickles.get_damage();
-        	WeaponHit = sickles.get_damage();
-        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
-        }
-
-        else if (choose == 6) {
-        	dirk.get_damage();
-        	WeaponHit = dirk.get_damage();
-        	cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";   
-        }
-
-        int hpdnew;
-
-        hpdnew = fighter.get_hpd() - WeaponHit;
+        int hpdnew = fighter.get_hpd() - WeaponHit;
         fighter.set_hpd(hpdnew);
-
+        cout << "У врага осталось " << fighter.get_hpd() << " здоровья!" << "\n";
         return fighter.get_hpd();
-	}; // Character ссылка на врага 
-
-	
-
-	void die() {
-		if (hpd <= 0) {
-			delete this;
-		}
     };
-    
-};
 
-//===================================================================================================================================================
+    int heal() {
+        int deltaheal;
+        int deltahp;
+
+        deltaheal = (rand() % 8) + 1;
+        deltahp = get_hpd() + deltaheal;
+
+        if (deltahp > get_hp()) {
+            deltahp = get_hp();
+            set_hpd(deltahp);
+        }
+
+        else {
+            set_hpd(deltahp);
+        }
+
+        cout << "В восстановили " << deltaheal << "здоровья" << '\n' << "HP: " << get_hpd() << "/" << get_hp();
+        
+        return get_hpd(); 
+    };
+
+    void die() {
+        if (hpd <= 0) {
+            cout << "Игрок погиб" << "\n";
+        }
+    };
+};
 
 class Enemy : public Character {
 public:
-	weapon swordE = *(new weapon());
-	weapon longswordE = *(new weapon());
-	weapon bowE  = *(new weapon());
-	weapon crossbowE = *(new weapon());
-	weapon sicklesE = *(new weapon());
-	weapon dirkE = *(new weapon());
+    weapon swordE;
+    weapon longswordE;
+    weapon bowE;
+    weapon crossbowE;
+    weapon sicklesE;
+    weapon dirkE;
+    vector<weapon> bagpackE;
 
-	vector<weapon> bagpackE = {swordE, longswordE, bowE, crossbowE, sicklesE, dirkE};
-
-	int hp;
-	int hpd;
-
-	int attack ( weapon arsenal, Character hero) {
-		
-		swordE.set_title("Меч");
+    Enemy() {
+        swordE.set_title("Меч");
         longswordE.set_title("Длинный меч");
         bowE.set_title("Лук");
         crossbowE.set_title("Арбалет");
         sicklesE.set_title("Серпы");
         dirkE.set_title("Кинжал");
-        
-		int hitpoint;
-		int hpdelta;
-		int randomAttack = (rand() % 6 + 1);
+        bagpackE = {swordE, longswordE, bowE, crossbowE, sicklesE, dirkE};
+    }
 
-		if (randomAttack == 1) {
-			swordE.weaponAttack();
-			cout << "Вас атакуют: " << swordE.get_title() << '\n';
-			hitpoint = swordE.get_damage();
-		}
-		
-		else if (randomAttack == 2) {
-			longswordE.weaponAttack();
-			cout << "Вас атакуют: " << longswordE.get_title() << '\n';
-			hitpoint = longswordE.get_damage();
-		}
+    int attack(weapon arsenal, Character& hero) {
+        int hitpoint = 0;
+        int randomAttack = rand() % 6;
 
-		else if (randomAttack == 3) {
-			bowE.weaponAttack();
-			cout << "Вас атакуют: " << bowE.get_title() << '\n';
-			hitpoint = bowE.get_damage();
-		}
+        hitpoint = bagpackE[randomAttack].weaponAttack();
+        cout << "Вас атакуют: " << bagpackE[randomAttack].get_title() << '\n';
 
-		else if (randomAttack == 4) {
-			crossbowE.weaponAttack();
-			cout << "Вас атакуют: " << crossbowE.get_title() << '\n';
-			hitpoint = crossbowE.get_damage();
-		}
+        int hpdelta = hero.get_hpd() - hitpoint;
+        hero.set_hpd(hpdelta);
+        cout << "Вам нанесли " << hitpoint << " урона. " << "У вас осталось " << hero.get_hpd() << "/" << hero.get_hp() << " здоровья!" << '\n';
 
-		else if (randomAttack == 5) {
-			sicklesE.weaponAttack();
-			cout << "Вас атакуют: " << sicklesE.get_title() << '\n';
-			hitpoint = sicklesE.get_damage();
-		}
+        return hero.get_hpd();
+    };
 
-		else if (randomAttack == 6) {
-			dirkE.weaponAttack();
-			cout << "Вас атакуют: " << dirkE.get_title() << '\n';
-			hitpoint = dirkE.get_damage();
-		}
-
-		
-		hpdelta = hero.get_hpd() - hitpoint;
-		hero.set_hpd(hpdelta);
-		cout << "Вам нанесли " << hitpoint << ". " << "У вас осталось " << hero.get_hpd() << "/" << hero.get_hp() << " здровья!" << '\n';
-
-		return hero.get_hpd();
-	};
-
-	void die() {
-		if (hpd <= 0) {
-			delete this;
-		}
-	}
+    void die() {
+        if (hpd <= 0) {
+            cout << "Враг повержен!" << "\n";
+        }
+    };
 };
