@@ -41,6 +41,6 @@ public:
 class armor {
 public:
     void repulse() {
-        cout << "Броня поглощает урон" << "\n";
+        cout << "Броня поглощает урон" << '\n';
     };
 };
