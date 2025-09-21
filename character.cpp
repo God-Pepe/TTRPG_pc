@@ -314,17 +314,17 @@ public:
         cin >> choose;
 
         if ((fabs(dx) > 1 || fabs(dy) > 1) && (choose == 1 || choose == 2|| choose == 5 || choose == 6)) {
-            cout << "Противник слишком далеко. Вы бьёте по воздуху." << '\n';
+            cout << "Противник слишком далеко. Вы бьёте по воздуху." << '\n' << '\n';
         }
 
         else if ((fabs(dx) > 1 || fabs(dy) > 1) && (choose == 3 || choose == 4)) {
             WeaponHit = bagpack[choose-1].weaponAttack();
-            cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
+            cout << "Вы нанесли " << WeaponHit << " урона!" << '\n' << '\n';
         }
 
         else if ((fabs(dx) == 1 || fabs(dy) == 1) && (choose >= 1 && choose <= 6)) {
             WeaponHit = bagpack[choose-1].weaponAttack();
-            cout << "Вы нанесли " << WeaponHit << " урона!" << "\n";
+            cout << "Вы нанесли " << WeaponHit << " урона!" << '\n' << '\n';
         }
 
         else {
@@ -334,7 +334,7 @@ public:
 
         int hpdnew = fighter.get_hpd() - WeaponHit;
         fighter.set_hpd(hpdnew);
-        //cout << "У врага осталось " << fighter.get_hpd() << " здоровья!" << "\n";
+        //cout << "У врага осталось " << fighter.get_hpd() << " здоровья!" << '\n';
         return fighter.get_hpd();
     };
 
@@ -354,14 +354,14 @@ public:
             set_hpd(deltahp);
         }
 
-        cout << "В восстановили " << deltaheal << "здоровья" << '\n' << "HP: " << get_hpd() << "/" << get_hp();
+        cout << "В восстановили " << deltaheal << "здоровья" << '\n' << "HP: " << get_hpd() << "/" << get_hp() << '\n' << "" << '\n';
         
         return get_hpd(); 
     };
 
     void die() {
         if (hpd <= 0) {
-            cout << "Игрок погиб" << "\n";
+            cout << "Игрок погиб" << '\n';
         }
     };
 };
@@ -406,7 +406,7 @@ public:
 
         int hpdelta = hero.get_hpd() - hitpoint;
         hero.set_hpd(hpdelta);
-        cout << "Вам нанесли " << hitpoint << " урона. " << "У вас осталось " << hero.get_hpd() << "/" << hero.get_hp() << " здоровья!" << '\n';
+        cout << "Вам нанесли " << hitpoint << " урона. " << "У вас осталось " << hero.get_hpd() << "/" << hero.get_hp() << " здоровья!" << '\n' << "" << '\n';
 
         return hero.get_hpd();
     };
@@ -414,8 +414,8 @@ public:
     void move(Character& hero) {
         int movementrandom;
 
-        oy = 3;
-        ox = 3;
+        set_ox(3);
+        set_oy(3);
 
         while(true){
 

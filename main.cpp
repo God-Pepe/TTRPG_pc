@@ -109,6 +109,9 @@ public:
         hero.set_ox(1);
         hero.set_oy(1);
 
+        //fighter.set_ox(/*fighter.get_oxmax()*/3);
+        //fighter.set_oy(/*fighter.get_oymax()*/3);
+
         cout << "Площадь местности: " << width << ", " << length << '\n';
 
         creatEnemy();
@@ -116,15 +119,15 @@ public:
 
         while (true) {
             if (hero.hpd > 0 && fighter.hpd > 0) {
-                cout << "Ваш ход! " << '\n';
-                actionPlayer();
+                cout << "Ход противника! " << '\n';
+                actionEnemy();
 
                 if (fighter.hpd <= 0) {
                     break;
                 }
 
-                cout << "Ход врага!" << '\n';
-                actionEnemy();
+                cout << "Ваш ход!" << '\n';
+                actionPlayer();
 
                 if (hero.hpd <= 0){
                     break;
