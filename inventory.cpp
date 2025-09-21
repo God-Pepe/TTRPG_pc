@@ -1,8 +1,8 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <map>
-#include <ctime>
+#include<iostream>
+#include<vector>
+#include<string>
+#include<map>
+#include<ctime>
 using namespace std;
 
 map<string, pair<int, int>> WeaponList = {

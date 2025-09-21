@@ -1,16 +1,15 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <random>
-#include <vector>
-#include <ctime>
+#include<iostream>
+#include<string>
+#include<map>
+#include<random>
+#include<vector>
+#include<ctime>
+#include<cmath>
 #include "character.cpp"
 using namespace std;
 
 class scene {
-public:
-
-    int lenth;
+public:  
 
     Player hero;
     Enemy fighter;
@@ -47,12 +46,22 @@ public:
     };
 
     void actionEnemy() {
-        fighter.attack(fighter.bagpackE[0], hero);
+        int randomact;
+        randomact = rand() % 2;
+
+        if (randomact == 0) {
+            fighter.attack(fighter.bagpackE[0], hero);
+        }
+
+        else if (randomact == 1) {
+            fighter.move(hero);
+        }
+        
     };
 
     void actionPlayer() {
         int act;
-        cout << "Выберите действие:" << '\n' << "[1] -- атака" << '\n' << "[2] -- восстановить здоровье" << '\n' << "[3] -- попытаться сбежать" << '\n' << "Выбирите действие: ";
+        cout << "Действие:" << '\n' << "[1] -- атака" << '\n' << "[2] -- восстановить здоровье" << '\n' << "[3] -- попытаться сбежать" <<'\n' << "[4] -- движение" <<'\n' << "Выбирите действие: ";
         cin >> act;
         if (act == 1) {
             hero.attack(hero.bagpack[0], fighter);
@@ -74,13 +83,36 @@ public:
 
             else {
                 cout << "У вас не получилось сбежать" << '\n';
-            }
-        };
+            };
+        }
+
+        else if (act == 4) {
+            hero.move(fighter);
+        }
     };
 
-    void battle() {
+    void battle() { // width -- ось ОХ, length -- ось ОУ
+
+        int width; 
+        int length;
+
+        width = ((rand() % 4) + 3);
+
+        hero.set_oxmax(width);
+        fighter.set_oxmax(width);
+
+        length = ((rand() % 4) + 3);
+
+        hero.set_oymax(length);
+        fighter.set_oymax(length);
+
+        hero.set_ox(1);
+        hero.set_oy(1);
+
+        cout << "Площадь местности: " << width << ", " << length << '\n';
+
         creatEnemy();
-        cout << "На вас напали!" << '\n';
+        cout << "На вас напали!" << '\n' << "" << '\n';
 
         while (true) {
             if (hero.hpd > 0 && fighter.hpd > 0) {
@@ -90,8 +122,6 @@ public:
                 if (fighter.hpd <= 0) {
                     break;
                 }
-
-
 
                 cout << "Ход врага!" << '\n';
                 actionEnemy();
